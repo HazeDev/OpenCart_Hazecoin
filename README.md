@@ -1,6 +1,6 @@
 # OpenCart_hazecoin
 ### by John Atkinson (jga) from [BTC Gear](http://btcgear.com/)
-### updated to use hazecoin instead of bitcoin by laSeek 2012
+### updated to use hazecoin instead of bitcoin by HazeDev 2015
 
 Donations can be paid here: **12ctRXVVPAXQ6CQyEXkBhvi33K7kP4CMB5** to the original author
 
@@ -12,7 +12,7 @@ This code accurately converts USD to HAZE using the current btce average.  It is
 
 This extension has been tested with OpenCart versions between 1.5.2.x and 1.5.4.
 
-Any questions or comments can be sent to support@btcgear.com.
+Any questions or comments can be sent to Hazecoin@hotmail.com.
 
 # Installation
 
