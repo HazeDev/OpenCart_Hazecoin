@@ -1,7 +1,7 @@
 <?php echo $header; ?>
 <!--
 Copyright (c) 2012 John Atkinson (jga)
-Updated with litecoin support by laSeek 2012
+Updated with hazecoin support by laSeek 2012
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this
 software and associated documentation files (the "Software"), to deal in the Software
@@ -42,43 +42,43 @@ DEALINGS IN THE SOFTWARE.
       <table class="form">
         <tr>
           <td><span class="required">*</span> <?php echo $entry_username; ?></td>
-          <td><input type="text" name="litecoin_rpc_username" value="<?php echo $litecoin_rpc_username; ?>" style="width:300px;" />
+          <td><input type="text" name="hazecoin_rpc_username" value="<?php echo $hazecoin_rpc_username; ?>" style="width:300px;" />
             <?php if ($error_username) { ?>
             <span class="error"><?php echo $error_username; ?></span>
             <?php } ?></td>
         </tr>
         <tr>
           <td><span class="required">*</span> <?php echo $entry_address; ?></td>
-          <td><input type="text" name="litecoin_rpc_address" value="<?php echo $litecoin_rpc_address; ?>" style="width:300px;" />
+          <td><input type="text" name="hazecoin_rpc_address" value="<?php echo $hazecoin_rpc_address; ?>" style="width:300px;" />
             <?php if ($error_address) { ?>
             <span class="error"><?php echo $error_address; ?></span>
             <?php } ?></td>
         </tr>
         <tr>
           <td><span class="required">*</span> <?php echo $entry_password; ?></td>
-          <td><input type="text" name="litecoin_rpc_password" value="<?php echo $litecoin_rpc_password; ?>" style="width:300px;" />
+          <td><input type="text" name="hazecoin_rpc_password" value="<?php echo $hazecoin_rpc_password; ?>" style="width:300px;" />
             <?php if ($error_password) { ?>
             <span class="error"><?php echo $error_password; ?></span>
             <?php } ?></td>
         </tr>
         <tr>
           <td><span class="required">*</span> <?php echo $entry_port; ?></td>
-          <td><input type="text" name="litecoin_rpc_port" value="<?php echo $litecoin_rpc_port; ?>" style="width:300px;" />
+          <td><input type="text" name="hazecoin_rpc_port" value="<?php echo $hazecoin_rpc_port; ?>" style="width:300px;" />
             <?php if ($error_port) { ?>
             <span class="error"><?php echo $error_port; ?></span>
             <?php } ?></td>
         </tr>
         <tr>
           <td><span class="required">*</span> <?php echo $entry_prefix; ?></td>
-          <td><input type="text" name="litecoin_prefix" value="<?php echo $litecoin_prefix; ?>" style="width:300px;" />
+          <td><input type="text" name="hazecoin_prefix" value="<?php echo $hazecoin_prefix; ?>" style="width:300px;" />
             <?php if ($error_prefix) { ?>
             <span class="error"><?php echo $error_prefix; ?></span>
             <?php } ?></td>
         </tr>
 		<tr>
-          <td><?php echo $entry_show_ltc; ?></td>
-          <td><select name="litecoin_show_ltc">
-              <?php if ($litecoin_show_ltc) { ?>
+          <td><?php echo $entry_show_haze; ?></td>
+          <td><select name="hazecoin_show_haze">
+              <?php if ($hazecoin_show_haze) { ?>
               <option value="1" selected="selected"><?php echo $text_yes; ?></option>
               <option value="0"><?php echo $text_no; ?></option>
               <?php } else { ?>
@@ -89,9 +89,9 @@ DEALINGS IN THE SOFTWARE.
         </tr>
           <tr>
             <td><?php echo $entry_order_status; ?></td>
-            <td><select name="litecoin_order_status_id">
+            <td><select name="hazecoin_order_status_id">
                 <?php foreach ($order_statuses as $order_status) { ?>
-                <?php if ($order_status['order_status_id'] == $litecoin_order_status_id) { ?>
+                <?php if ($order_status['order_status_id'] == $hazecoin_order_status_id) { ?>
                 <option value="<?php echo $order_status['order_status_id']; ?>" selected="selected"><?php echo $order_status['name']; ?></option>
                 <?php } else { ?>
                 <option value="<?php echo $order_status['order_status_id']; ?>"><?php echo $order_status['name']; ?></option>
@@ -101,8 +101,8 @@ DEALINGS IN THE SOFTWARE.
           </tr>
         <tr>
           <td><?php echo $entry_status; ?></td>
-          <td><select name="litecoin_status">
-              <?php if ($litecoin_status) { ?>
+          <td><select name="hazecoin_status">
+              <?php if ($hazecoin_status) { ?>
               <option value="1" selected="selected"><?php echo $text_enabled; ?></option>
               <option value="0"><?php echo $text_disabled; ?></option>
               <?php } else { ?>
@@ -113,7 +113,7 @@ DEALINGS IN THE SOFTWARE.
         </tr>
         <tr>
           <td><?php echo $entry_sort_order; ?></td>
-          <td><input type="text" name="litecoin_sort_order" value="<?php echo $litecoin_sort_order; ?>" size="1" /></td>
+          <td><input type="text" name="hazecoin_sort_order" value="<?php echo $hazecoin_sort_order; ?>" size="1" /></td>
         </tr>
       </table>
     </form>
