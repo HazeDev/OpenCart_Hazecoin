@@ -21,7 +21,7 @@ DEALINGS IN THE SOFTWARE.
 */
 
 // Text
-$_['text_title'] = 'Litecoin';
-$_['button_litecoin_confirm'] 		= 'I sent it!';
+$_['text_title'] = 'hazecoin';
+$_['button_hazecoin_confirm'] 		= 'I sent it!';
 $_['error_msg'] = 'Error communicating with payment provider. Please contact the store for assistance.';
 ?>
