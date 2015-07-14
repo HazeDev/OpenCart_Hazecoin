@@ -20,12 +20,12 @@ OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 DEALINGS IN THE SOFTWARE.
 */
 
-class ControllerPaymentLitecoin extends Controller {
+class ControllerPaymenthazecoin extends Controller {
 
-    private $payment_module_name  = 'litecoin';
+    private $payment_module_name  = 'hazecoin';
 	protected function index() {
         $this->language->load('payment/'.$this->payment_module_name);
-    	$this->data['button_litecoin_confirm'] = $this->language->get('button_litecoin_confirm');
+    	$this->data['button_hazecoin_confirm'] = $this->language->get('button_hazecoin_confirm');
 		$this->data['error_msg'] = $this->language->get('error_msg');
 				
 		$this->checkUpdate();
@@ -36,33 +36,33 @@ class ControllerPaymentLitecoin extends Controller {
 
 		$current_default_currency = "USD";
 		
-		$this->data['litecoin_total'] = round($this->currency->convert($order['total'], $current_default_currency, "LTC"),4);
+		$this->data['hazecoin_total'] = round($this->currency->convert($order['total'], $current_default_currency, "haze"),4);
 		
 		require_once('jsonRPCClient.php');
 		
-		$litecoin = new jsonRPCClient('http://'.$this->config->get('litecoin_rpc_username').':'.$this->config->get('litecoin_rpc_password').'@'.$this->config->get('litecoin_rpc_address').':'.$this->config->get('litecoin_rpc_port').'/');
+		$hazecoin = new jsonRPCClient('http://'.$this->config->get('hazecoin_rpc_username').':'.$this->config->get('hazecoin_rpc_password').'@'.$this->config->get('hazecoin_rpc_address').':'.$this->config->get('hazecoin_rpc_port').'/');
 		
 		$this->data['error'] = false;
 		try {
-			$litecoin_info = $litecoin->getinfo();
+			$hazecoin_info = $hazecoin->getinfo();
 		} catch (Exception $e) {
 			$this->data['error'] = true;
-			if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/payment/litecoin.tpl')) {
-				$this->template = $this->config->get('config_template') . '/template/payment/litecoin.tpl';
+			if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/payment/hazecoin.tpl')) {
+				$this->template = $this->config->get('config_template') . '/template/payment/hazecoin.tpl';
 			} else {
-				$this->template = 'default/template/payment/litecoin.tpl';
+				$this->template = 'default/template/payment/hazecoin.tpl';
 			}	
 			$this->render();
 			return;
 		}
 		$this->data['error'] = false;
 		
-		$this->data['litecoin_send_address'] = $litecoin->getaccountaddress($this->config->get('litecoin_prefix').'_'.$order_id);
+		$this->data['hazecoin_send_address'] = $hazecoin->getaccountaddress($this->config->get('hazecoin_prefix').'_'.$order_id);
 		
-		if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/payment/litecoin.tpl')) {
-			$this->template = $this->config->get('config_template') . '/template/payment/litecoin.tpl';
+		if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/payment/hazecoin.tpl')) {
+			$this->template = $this->config->get('config_template') . '/template/payment/hazecoin.tpl';
 		} else {
-			$this->template = 'default/template/payment/litecoin.tpl';
+			$this->template = 'default/template/payment/hazecoin.tpl';
 		}	
 		
 		$this->render();
@@ -74,20 +74,20 @@ class ControllerPaymentLitecoin extends Controller {
 		$order_id = $this->session->data['order_id'];
         $order = $this->model_checkout_order->getOrder($order_id);
 		$current_default_currency = "USD";		
-		$litecoin_total = round($this->currency->convert($order['total'], $current_default_currency, "LTC"),4);
+		$hazecoin_total = round($this->currency->convert($order['total'], $current_default_currency, "haze"),4);
 		require_once('jsonRPCClient.php');
-		$litecoin = new jsonRPCClient('http://'.$this->config->get('litecoin_rpc_username').':'.$this->config->get('litecoin_rpc_password').'@'.$this->config->get('litecoin_rpc_address').':'.$this->config->get('litecoin_rpc_port').'/');
+		$hazecoin = new jsonRPCClient('http://'.$this->config->get('hazecoin_rpc_username').':'.$this->config->get('hazecoin_rpc_password').'@'.$this->config->get('hazecoin_rpc_address').':'.$this->config->get('hazecoin_rpc_port').'/');
 	
 		try {
-			$litecoin_info = $litecoin->getinfo();
+			$hazecoin_info = $hazecoin->getinfo();
 		} catch (Exception $e) {
 			$this->data['error'] = true;
 		}
 
-		$received_amount = $litecoin->getreceivedbyaccount($this->config->get('litecoin_prefix').'_'.$order_id,0);
-		if(round((float)$received_amount,4) >= round((float)$litecoin_total,4)) {
+		$received_amount = $hazecoin->getreceivedbyaccount($this->config->get('hazecoin_prefix').'_'.$order_id,0);
+		if(round((float)$received_amount,4) >= round((float)$hazecoin_total,4)) {
 			$order = $this->model_checkout_order->getOrder($order_id);
-			$this->model_checkout_order->confirm($order_id, $this->config->get('litecoin_order_status_id'));
+			$this->model_checkout_order->confirm($order_id, $this->config->get('hazecoin_order_status_id'));
 			echo true;
 		}
 		else {
@@ -98,11 +98,11 @@ class ControllerPaymentLitecoin extends Controller {
 	public function checkUpdate() {
 		if (extension_loaded('curl')) {
 			$data = array();
-			$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "currency WHERE code = 'LTC'");
+			$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "currency WHERE code = 'haze'");
 						
 			if(!$query->row) {
-				$this->db->query("INSERT INTO " . DB_PREFIX . "currency (title, code, symbol_right, decimal_place, status) VALUES ('litecoin', 'LTC', ' LTC', '4', ".$this->config->get('litecoin_show_ltc').")");
-				$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "currency WHERE code = 'LTC'");
+				$this->db->query("INSERT INTO " . DB_PREFIX . "currency (title, code, symbol_right, decimal_place, status) VALUES ('hazecoin', 'haze', ' haze', '4', ".$this->config->get('hazecoin_show_haze').")");
+				$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "currency WHERE code = 'haze'");
 			}
 			
 			$format = '%Y-%m-%d %H:%M:%S';
@@ -129,7 +129,7 @@ class ControllerPaymentLitecoin extends Controller {
 	}
 	
 	public function runUpdate() {
-		$path = "/2/ltc_usd/ticker";
+		$path = "/2/haze_usd/ticker";
 		$req = array();
 		
 		// API settings
@@ -166,10 +166,10 @@ class ControllerPaymentLitecoin extends Controller {
 		if ($res === false) throw new Exception('Could not get reply: '.curl_error($ch));
 		$dec = json_decode($res, true);
 		if (!$dec) throw new Exception('Invalid data received, please make sure connection is working and requested API exists');
-		$ltcdata = $dec;
+		$hazedata = $dec;
 		
-		$currency = "LTC";
-		$value = $ltcdata['ticker']['avg'];
+		$currency = "haze";
+		$value = $hazedata['ticker']['avg'];
 		
 		if ((float)$value) {
 			$value = 1/$value;
