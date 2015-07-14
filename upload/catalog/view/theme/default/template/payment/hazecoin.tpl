@@ -21,9 +21,9 @@ DEALINGS IN THE SOFTWARE.
 -->
 
 <?php if(!$error) { ?>
-	<div style="font-size:16px; text-align:center;">Please send <input type="text" style="font-size:18px; text-align: right; width:100px; " readonly="readonly" value="<?php echo $litecoin_total; ?>"> LTC to <input type="text" style="font-size:18px; width:400px; text-align:center; " readonly="readonly" value="<?php echo $litecoin_send_address; ?>"> to complete the transaction.</div>
+	<div style="font-size:16px; text-align:center;">Please send <input type="text" style="font-size:18px; text-align: right; width:100px; " readonly="readonly" value="<?php echo $hazecoin_total; ?>"> HAZE to <input type="text" style="font-size:18px; width:400px; text-align:center; " readonly="readonly" value="<?php echo $hazecoin_send_address; ?>"> to complete the transaction.</div>
 	<div class="buttons">
-		<div class="right"><a id="button-confirm" class="button"><span><?php echo $button_litecoin_confirm; ?></span></a></div>
+		<div class="right"><a id="button-confirm" class="button"><span><?php echo $button_hazecoin_confirm; ?></span></a></div>
 	</div>
 <?php } else { ?>
 <div class="warning">
@@ -34,7 +34,7 @@ DEALINGS IN THE SOFTWARE.
 $('#button-confirm').bind('click', function() {
 	$.ajax({ 
 		type: 'GET',
-		url: 'index.php?route=payment/litecoin/confirm_sent',
+		url: 'index.php?route=payment/hazecoin/confirm_sent',
         timeout: 5000,
         error: function() {
             alert('That didn\'t quite work. Please try again. If you receive this message multiple times, please contact us so we can help finalize your order.');
