@@ -83,7 +83,7 @@ class ControllerPaymenthazecoin extends Controller {
         $this->data['entry_port']       = $this->language->get('entry_port');
         $this->data['entry_prefix']       = $this->language->get('entry_prefix');
         $this->data['entry_order_status'] = $this->language->get('entry_order_status');
-        $this->data['entry_show_ltc']         = $this->language->get('entry_show_ltc');
+        $this->data['entry_show_haze']         = $this->language->get('entry_show_haze');
         $this->data['entry_status']         = $this->language->get('entry_status');
 		$this->data['entry_sort_order'] 	= $this->language->get('entry_sort_order');
 
@@ -171,10 +171,10 @@ class ControllerPaymenthazecoin extends Controller {
 		} else {
 			$this->data[$this->payment_module_name.'_prefix'] = $this->config->get($this->payment_module_name.'_prefix');
 		}
-        if (isset($this->request->post[$this->payment_module_name.'_show_ltc'])) {
-			$this->data[$this->payment_module_name.'_show_ltc'] = $this->request->post[$this->payment_module_name.'_show_ltc'];
+        if (isset($this->request->post[$this->payment_module_name.'_show_haze'])) {
+			$this->data[$this->payment_module_name.'_show_haze'] = $this->request->post[$this->payment_module_name.'_show_haze'];
 		} else {
-			$this->data[$this->payment_module_name.'_show_ltc'] = $this->config->get($this->payment_module_name.'_show_ltc');
+			$this->data[$this->payment_module_name.'_show_haze'] = $this->config->get($this->payment_module_name.'_show_haze');
 		}
 		if (isset($this->request->post[$this->payment_module_name.'_order_status_id'])) {
 			$this->data[$this->payment_module_name.'_order_status_id'] = $this->request->post[$this->payment_module_name.'_order_status_id'];
