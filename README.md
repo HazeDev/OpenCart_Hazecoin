@@ -1,14 +1,14 @@
-# OpenCart_litecoin
+# OpenCart_hazecoin
 ### by John Atkinson (jga) from [BTC Gear](http://btcgear.com/)
-### updated to use litecoin instead of bitcoin by laSeek 2012
+### updated to use hazecoin instead of bitcoin by laSeek 2012
 
 Donations can be paid here: **12ctRXVVPAXQ6CQyEXkBhvi33K7kP4CMB5** to the original author
 
 Initial bounty paid by cablepair.
 
-This is an OpenCart payment module that communicates with a litecoin client using JSON RPC.
+This is an OpenCart payment module that communicates with a hazecoin client using JSON RPC.
 
-This code accurately converts USD to LTC using the current btce average.  It is completely self contained and requires no cron jobs or external hardware other than a properly configured litecoind server.  Every order creates a new litecoin address for payment and gives it a label corresponding to the order_id of the order.  It installs like any other OpenCart plugin and it is completely integrated with OpenCart.
+This code accurately converts USD to HAZE using the current btce average.  It is completely self contained and requires no cron jobs or external hardware other than a properly configured hazecoind server.  Every order creates a new hazecoin address for payment and gives it a label corresponding to the order_id of the order.  It installs like any other OpenCart plugin and it is completely integrated with OpenCart.
 
 This extension has been tested with OpenCart versions between 1.5.2.x and 1.5.4.
 
@@ -17,20 +17,20 @@ Any questions or comments can be sent to support@btcgear.com.
 # Installation
 
 1. Upload all files maintaining OpenCart folder structure.
-2. Install the payment module in the admin console (Extensions > Payments > litecoin > Install).
-3. Edit the payment module settings (Extensions > Payments > litecoin > Edit).
-4. Run at least one test order through checkout up until payment (no payment required).  The first order initializes the litecoin currency and will return 0 ltc for the order total.
+2. Install the payment module in the admin console (Extensions > Payments > hazecoin > Install).
+3. Edit the payment module settings (Extensions > Payments > hazecoin > Edit).
+4. Run at least one test order through checkout up until payment (no payment required).  The first order initializes the hazecoin currency and will return 0 HAZE for the order total.
 
 ## Explanation of Settings
 
-* *litecoin RPC Username*: This is the username in the "rpcuser" line of your litecoin.conf file.
-* *litecoin RPC Host Address*: This is the IP address of the computer litecoind is running on.
-* *litecoin RPC Password*: This is the password in the "rpcpassword" line of your litecoin.conf file.
-* *litecoin RPC Port*: This is the port number in the "rpcport" line of your litecoin.conf file.  The default port is 8332.
+* *hazecoin RPC Username*: This is the username in the "rpcuser" line of your hazecoin.conf file.
+* *hazecoin RPC Host Address*: This is the IP address of the computer hazecoind is running on.
+* *hazecoin RPC Password*: This is the password in the "rpcpassword" line of your hazecoin.conf file.
+* *hazecoin RPC Port*: This is the port number in the "rpcport" line of your hazecoin.conf file.  The default port is 8332.
 * *The prefix for the address labels*: The addresses will be assigned to accounts named with the format [prefix]_[order_id].
-* *Show ltc as a store currency*: If you select yes, your customers will be able to view prices in ltc.
+* *Show HAZE as a store currency*: If you select yes, your customers will be able to view prices in HAZE.
 * *Status of a new order*: Choose a status for an order that has received payment with 0 confirmations.
-* *Status*: Enable the litecoin payment module here.
+* *Status*: Enable the hazecoin payment module here.
 * *Sort Order*: Where you want this module to show up in relation to the other payment modules on the checkout page.
 
 
